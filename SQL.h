@@ -6,6 +6,14 @@
 #include <sqltypes.h>
 #include <sql.h>
 
+#include <sstream>
+#include <iomanip>
+
+#include <cstdlib>
+
+#include "Material.h"
+#include "Utilities.h"
+
 using namespace std;
 
 class SQL
@@ -17,8 +25,9 @@ public:
 	void Connect();
 	
 	void ShowData();
-	void Add(std::string name, std::string price);
-	
+	void GetData(std::shared_ptr<Material> material);
+	void Add();
+	void Modify(std::string name, std::string price);
 
 private:
 	void Disconnect();

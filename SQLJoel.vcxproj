@@ -151,10 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Quotation.cpp" />
     <ClCompile Include="SQL.cpp" />
     <ClCompile Include="SQLJoel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Utilities.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Quotation.h" />
     <ClInclude Include="SQL.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

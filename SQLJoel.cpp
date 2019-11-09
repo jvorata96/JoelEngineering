@@ -3,39 +3,64 @@
 
 #include <iostream>
 #include "SQL.h"
+#include "Quotation.h"
+
+#include <sstream>
+#include <iomanip>
+
+#include <cstdlib>
 
 using namespace std;
 
 int main()
 {
-	SQL sql;
-	sql.Connect();
+	std::shared_ptr<SQL> sql = std::make_shared<SQL>();
+	std::string x = "junred";
+	Quotation quotation(x, sql);
+	sql->Connect();
 
-	int choice = 0;
-	std::string name{}, price{};
-	cout << "0: Quit; 1:ShowAll, 2:Add" << endl;
-	cin >> choice;
+	int choice = 1;
+	std::string name{}, price{}, product_name{};
+	
+	system("mode 650");
+
 	while (choice)
 	{
+		system("CLS");
+		cout << "0: Quit; 1:ShowAll, 2:Add, 3:Modify, 4:Create Quotation" << endl;
+		cin >> choice;
+		cin.ignore(256, '\n');
+
 		switch (choice)
 		{
 		case 0:
 			break;
 		case 1:
-			sql.ShowData();
+			sql->ShowData();
+			system("PAUSE");
 			break;
 		case 2:
+			sql->Add();
+			system("PAUSE");
+			break;
+		case 3:
 			cout << "Enter name: ";
-			cin >> name;
+			getline(cin, name);
 			cout << "Enter price: ";
 			cin >> price;
-			sql.Add(name, price);
+			sql->Modify(name, price);
+			system("PAUSE");
 			break;
+
+		case 4:
+			quotation.AddMaterial();
+			system("PAUSE");
+			break;
+
 		default:
 			break;
+		
 		}
-		cout << "0: Quit; 1:ShowAll, 2:Add" << endl;
-		cin >> choice;
 	}
 
 
